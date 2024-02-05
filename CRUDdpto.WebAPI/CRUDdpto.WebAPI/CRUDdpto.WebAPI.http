@@ -1,0 +1,6 @@
+@CRUDdpto.WebAPI_HostAddress = http://localhost:5278
+
+GET {{CRUDdpto.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

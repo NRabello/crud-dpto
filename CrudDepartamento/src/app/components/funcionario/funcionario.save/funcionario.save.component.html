@@ -1,0 +1,68 @@
+<div class="container p-5">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-6 border boder-light rounded p-5 shadow" *ngIf="formulario">
+            <h6 align="center">{{tituloFormulario}}</h6>
+            <hr />
+
+            <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="nome" placeholder="Digite aqui..." />
+                    <div *ngIf="formulario.get('nome').hasError('required') && formulario.get('nome').touched"
+                        style="color:red">
+                        O nome do Funcionario é obrigatório!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Foto</label>
+                    <select class="form-control form-control-sm" formControlName="foto">
+                        <option *ngFor="let imagem of imagens" [value]="imagem.nome">
+                            {{ imagem.nome }}
+                            <img src="'assets/images/' + imagem.nome " alt="{{ imagem.nome }}" style="width: 20px; height: 20px;">
+                        </option>
+                    </select>
+                    <div *ngIf="formulario.get('foto').hasError('required') && formulario.get('foto').touched"
+                        style="color:red">
+                        A foto do Funcionario é obrigatória!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>RG</label>
+                    <input type="text" class="form-control form-control-sm" formControlName="rg" placeholder="Digite aqui..."/>
+                    <div *ngIf="formulario.get('rg').hasError('required') && formulario.get('rg').touched"
+                        style="color:red">
+                        O RG do Funcionario é obrigatório!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Departamento</label>
+                    <select class="form-control form-control-sm" formControlName="departamento" [compareWith]="compareDepartamentos">
+                        <option *ngFor="let departamento of departamentos" [ngValue]="departamento">{{departamento.nome}}</option>
+                    </select>
+
+                    <div *ngIf="formulario.get('departamento').hasError('required') && formulario.get('departamento').touched"
+                        style="color:red">
+                        O departamento do Funcionário é obrigatório!
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="d-flex">
+                    <div class="row">
+                        <div class="ml-2">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary"
+                                [disabled]="!formulario.valid">Salvar</button>
+                            <span style="visibility: hidden;">&nbsp;</span>
+                            <button type="button" class="btn btn-sm btn-light" (click)="Voltar()">Voltar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

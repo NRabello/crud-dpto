@@ -1,0 +1,21 @@
+.image{
+    width: 38px; 
+    height: 38px;
+}
+
+.table-warning{
+    vertical-align: middle;
+    text-align: center
+}
+
+.table-info{
+    text-align: center;
+}
+
+.thNome{
+    text-align: left;
+}
+
+.tdNome{
+    text-align: left;
+}
